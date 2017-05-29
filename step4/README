@@ -1,4 +1,25 @@
 
+if you want to make in yokota01 server
+
+Default Compiler Options BLISLAB_USE_INTEL=false
+
+then you get bellow message
+
+```
+step4$ make
+* Using CFLAGS=-O3 -fopenmp -mavx -fPIC -DUSE_BLAS
+* Using LDFLAGS=-I./include -I./kernels -I{BLAS_DIR}/include
+gcc -O3 -fopenmp -mavx -fPIC -DUSE_BLAS -c kernels/bl_dgemm_asm_8x4.c -o kernels/bl_dgemm_asm_8x4.o -I./include -I./kernels -I{BLAS_DIR}/include
+kernels/bl_dgemm_asm_8x4.c: In function ‘bl_dgemm_asm_8x4’:
+kernels/bl_dgemm_asm_8x4.c:16:2: error: ‘asm’ operand has impossible constraints
+  __asm__ volatile
+  ^
+make: *** [kernels/bl_dgemm_asm_8x4.o] Error 1
+```
+
+so you should turn on Compiler Options
+BLISLAB_USE_INTEL=true
+
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                 ____  _     ___ ____  _       _     
                | __ )| |   |_ _/ ___|| | __ _| |__  
